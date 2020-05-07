@@ -1,0 +1,46 @@
+package br.com.alanecher.desafioandroid.ui
+
+import android.content.Context
+import android.content.Intent
+import android.os.Bundle
+import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import br.com.alanecher.desafioandroid.R
+import br.com.alanecher.desafioandroid.domain.Character
+import br.com.alanecher.desafioandroid.ui.viewmodels.HQMaisCaraPersonagemViewModel
+import kotlinx.android.synthetic.main.activity_h_q_mais_cara_personagem.*
+
+class ActivityHQMaisCaraPersonagem : AppCompatActivity() {
+
+    private val model: HQMaisCaraPersonagemViewModel by viewModels { HQMaisCaraPersonagemViewModel.HQMaisCaraPersonagemVMFactory }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_h_q_mais_cara_personagem)
+
+        if (!intent.hasExtra(EXTRA_PERSONAGEM)) {
+            finish()
+            return
+        }
+
+        model.quadrinhoMaisCaro.observe(this, Observer {
+            txtTitulo.text = it.title
+            txtDescricao.text = it.description
+            txtPreco.text = "$ ${it.priceMax!!.price}"
+        })
+
+        model.carregarHQMaisCara((intent.getSerializableExtra(EXTRA_PERSONAGEM) as Character).id.toString())
+    }
+
+    companion object {
+        const val EXTRA_PERSONAGEM = "EXTRA_PERSONAGEM"
+
+        //TODO MELHORAR NAVEGACAO PARA O JETPACK
+        fun newIntent(context: Context, personagem: Character?): Intent {
+            var intent = Intent(context, ActivityHQMaisCaraPersonagem::class.java)
+            intent.putExtra(EXTRA_PERSONAGEM, personagem)
+            return intent
+        }
+    }
+}

@@ -13,6 +13,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 import java.math.BigInteger
 import java.security.MessageDigest
 
@@ -22,7 +23,7 @@ interface MarvelAPI {
     fun listaPersonagens(): Call<CharacterDataWrapper>
 
     @GET("characters/{characterId}/comics")
-    fun listaHQPorPersonagem(@Path("characterId") characterId:String): Call<ComicDataWrapper>
+    fun listaHQPorPersonagem(@Path("characterId") characterId:String, @Query("offset") offset:Int, @Query("limit") limit:Int): Call<ComicDataWrapper>
 
     companion object {
         private const val URL = "https://gateway.marvel.com/v1/public/"

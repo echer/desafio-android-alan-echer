@@ -25,7 +25,7 @@ class ActivityDetalhesPersonagem : AppCompatActivity() {
         }
 
         btnHQMaisCara.setOnClickListener {
-
+            startActivity(ActivityHQMaisCaraPersonagem.newIntent(ActivityDetalhesPersonagem@this,model.personagem.value))
         }
 
         model.personagem.observe(this, Observer {
@@ -39,6 +39,7 @@ class ActivityDetalhesPersonagem : AppCompatActivity() {
 
     companion object {
         const val EXTRA_PERSONAGEM = "EXTRA_PERSONAGEM"
+        //TODO MELHORAR NAVEGACAO PARA O JETPACK
         fun newIntent(context: Context, personagem: Character): Intent {
             var intent = Intent(context, ActivityDetalhesPersonagem::class.java)
             intent.putExtra(EXTRA_PERSONAGEM, personagem)

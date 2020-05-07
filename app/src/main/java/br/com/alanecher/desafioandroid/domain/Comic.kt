@@ -30,4 +30,6 @@ class Comic (
     val characters: CharacterList?, //A resource list containing the characters which appear in this comic.,
     val stories: StoryList?, //A resource list containing the stories which appear in this comic.,
     val events: EventList? //A resource list containing the events in which this comic appears.
-)
+){
+    var priceMax:ComicPrice? = null
+}
