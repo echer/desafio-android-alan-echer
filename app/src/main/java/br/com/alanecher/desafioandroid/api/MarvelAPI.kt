@@ -3,6 +3,8 @@ package br.com.alanecher.desafioandroid.api
 import android.util.Log
 import br.com.alanecher.desafioandroid.BuildConfig
 import br.com.alanecher.desafioandroid.api.dto.CharacterDataWrapper
+import br.com.alanecher.desafioandroid.api.dto.ComicDataContainer
+import br.com.alanecher.desafioandroid.api.dto.ComicDataWrapper
 import okhttp3.HttpUrl
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -11,6 +13,7 @@ import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Path
 import java.math.BigInteger
 import java.security.MessageDigest
 
@@ -19,9 +22,11 @@ interface MarvelAPI {
     @GET("characters")
     fun listaPersonagens(): Call<CharacterDataWrapper>
 
+    @GET("characters/{characterId}/comics")
+    fun listaHQPorPersonagem(@Path("characterId") characterId:String): Call<ComicDataWrapper>
+
     companion object {
         private const val URL = "https://gateway.marvel.com/v1/public/"
-        private const val HOST_AUTORIZADO = "developer.marvel.com"
         fun criaAPI(): MarvelAPI = criaAPI(HttpUrl.parse(URL)!!)
         fun geraHash(ts:Long):String {
             val hasStr="$ts${BuildConfig.privateKey+BuildConfig.apikey}"

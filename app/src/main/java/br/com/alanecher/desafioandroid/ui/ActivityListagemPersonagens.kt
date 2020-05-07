@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import br.com.alanecher.desafioandroid.R
 import br.com.alanecher.desafioandroid.api.MarvelAPI
 import br.com.alanecher.desafioandroid.api.dto.CharacterDataWrapper
+import br.com.alanecher.desafioandroid.api.dto.ComicDataWrapper
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -36,6 +37,34 @@ class ActivityListagemPersonagens : AppCompatActivity() {
                             Log.i(
                                 ActivityListagemPersonagens::class.java.simpleName,
                                 "Listagem sucesso!"
+                            )
+
+                            api.listaHQPorPersonagem(response.body()?.data?.results?.get(0)?.id.toString()).enqueue(
+                                object : Callback<ComicDataWrapper> {
+                                    override fun onFailure(call: Call<ComicDataWrapper>, t: Throwable) {
+                                        Log.e(ActivityListagemPersonagens::class.java.simpleName, "Listagem erro!")
+                                    }
+
+                                    override fun onResponse(
+                                        call: Call<ComicDataWrapper>,
+                                        response: Response<ComicDataWrapper>
+                                    ) {
+
+                                        when (response.code()) {
+                                            200 -> {
+                                                Log.i(
+                                                    ActivityListagemPersonagens::class.java.simpleName,
+                                                    "Listagem sucesso!"
+                                                )
+
+                                            }
+                                            else -> {
+
+                                            }
+                                        }
+
+                                    }
+                                }
                             )
 
                         }
