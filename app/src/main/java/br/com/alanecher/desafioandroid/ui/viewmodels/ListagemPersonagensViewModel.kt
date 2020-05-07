@@ -25,7 +25,7 @@ class ListagemPersonagensViewModel(
         api.listaPersonagens().enqueue(
             object : Callback<CharacterDataWrapper> {
                 override fun onFailure(call: Call<CharacterDataWrapper>, t: Throwable) {
-                    Log.e(ActivityListagemPersonagens::class.java.simpleName, "Listagem erro!")
+                    Log.e(ListagemPersonagensViewModel::class.java.simpleName, "Listagem erro!")
                 }
 
                 override fun onResponse(
@@ -35,41 +35,8 @@ class ListagemPersonagensViewModel(
 
                     when (response.code()) {
                         200 -> {
-                            Log.i(
-                                ActivityListagemPersonagens::class.java.simpleName,
-                                "Listagem sucesso!"
-                            )
-
+                            Log.i(ListagemPersonagensViewModel::class.java.simpleName, "Listagem sucesso!")
                             personagensLiveData.value = response.body()?.data?.results
-
-                            /*api.listaHQPorPersonagem(response.body()?.data?.results?.get(0)?.id.toString()).enqueue(
-                                object : Callback<ComicDataWrapper> {
-                                    override fun onFailure(call: Call<ComicDataWrapper>, t: Throwable) {
-                                        Log.e(ActivityListagemPersonagens::class.java.simpleName, "Listagem erro!")
-                                    }
-
-                                    override fun onResponse(
-                                        call: Call<ComicDataWrapper>,
-                                        response: Response<ComicDataWrapper>
-                                    ) {
-
-                                        when (response.code()) {
-                                            200 -> {
-                                                Log.i(
-                                                    ActivityListagemPersonagens::class.java.simpleName,
-                                                    "Listagem sucesso!"
-                                                )
-
-                                            }
-                                            else -> {
-
-                                            }
-                                        }
-
-                                    }
-                                }
-                            )*/
-
                         }
                         else -> {
                             personagensLiveData.value = ArrayList()

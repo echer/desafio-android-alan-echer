@@ -10,7 +10,7 @@ import br.com.alanecher.desafioandroid.R
 import br.com.alanecher.desafioandroid.domain.Character
 
 
-class ListagemPersonagensAdapter(private val personagens: List<Character>) : RecyclerView.Adapter<ListagemPersonagensAdapter.PersonagemViewHolder>() {
+class ListagemPersonagensAdapter(private val personagens: List<Character>, private val clickListener:OnItemClickListener) : RecyclerView.Adapter<ListagemPersonagensAdapter.PersonagemViewHolder>() {
 
     inner class PersonagemViewHolder(itemView: View):
         RecyclerView.ViewHolder(itemView) {
@@ -36,9 +36,13 @@ class ListagemPersonagensAdapter(private val personagens: List<Character>) : Rec
     }
 
     override fun onBindViewHolder(holder: PersonagemViewHolder, position: Int) {
-        var item = personagens.get(position)
+        var item = personagens[position]
         holder.txtNome?.text = item.name
-        holder.txtDescricao?.setText(item.description)
+        holder.txtDescricao?.text = item.description
+
+        holder.itemView.setOnClickListener{
+            clickListener.onItemClick(item)
+        }
     }
 
 }
