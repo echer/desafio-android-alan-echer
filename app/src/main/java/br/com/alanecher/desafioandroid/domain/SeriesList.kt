@@ -1,4 +1,4 @@
-package br.com.alanecher.desafioandroid.api.dto
+package br.com.alanecher.desafioandroid.domain
 
 class SeriesList(
     val available: Int?, //The number of total available series in this list. Will always be greater than or equal to the "returned" value.,

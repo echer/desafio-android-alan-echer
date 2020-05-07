@@ -1,4 +1,4 @@
-package br.com.alanecher.desafioandroid.api.dto
+package br.com.alanecher.desafioandroid.domain
 
 class EventSummary(
     val resourceURI: String?, //The path to the individual event resource.,

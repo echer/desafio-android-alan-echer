@@ -1,4 +1,4 @@
-package br.com.alanecher.desafioandroid.api.dto
+package br.com.alanecher.desafioandroid.domain
 
 class StorySummary(
     val resourceURI: String?, //The path to the individual story resource.,

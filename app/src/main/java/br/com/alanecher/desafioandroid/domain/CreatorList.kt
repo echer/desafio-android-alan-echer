@@ -1,4 +1,4 @@
-package br.com.alanecher.desafioandroid.api.dto
+package br.com.alanecher.desafioandroid.domain
 
 class CreatorList (
     val available: Int?, //The number of total available creators in this list. Will always be greater than or equal to the "returned" value.,

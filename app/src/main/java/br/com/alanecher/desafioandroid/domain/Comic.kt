@@ -1,4 +1,4 @@
-package br.com.alanecher.desafioandroid.api.dto
+package br.com.alanecher.desafioandroid.domain
 
 class Comic (
     val id: Int?, //The unique ID of the comic resource.,

@@ -1,4 +1,4 @@
-package br.com.alanecher.desafioandroid.api.dto
+package br.com.alanecher.desafioandroid.domain
 
 class TextObject (
     val type: String?, //The canonical type of the text object (e.g. solicit text, preview text, etc.).,

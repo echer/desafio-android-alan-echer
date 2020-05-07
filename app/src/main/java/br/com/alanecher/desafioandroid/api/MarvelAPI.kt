@@ -2,9 +2,8 @@ package br.com.alanecher.desafioandroid.api
 
 import android.util.Log
 import br.com.alanecher.desafioandroid.BuildConfig
-import br.com.alanecher.desafioandroid.api.dto.CharacterDataWrapper
-import br.com.alanecher.desafioandroid.api.dto.ComicDataContainer
-import br.com.alanecher.desafioandroid.api.dto.ComicDataWrapper
+import br.com.alanecher.desafioandroid.domain.CharacterDataWrapper
+import br.com.alanecher.desafioandroid.domain.ComicDataWrapper
 import okhttp3.HttpUrl
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient

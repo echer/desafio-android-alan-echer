@@ -1,80 +1,31 @@
 package br.com.alanecher.desafioandroid.ui
 
 import android.os.Bundle
-import android.util.Log
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.alanecher.desafioandroid.R
-import br.com.alanecher.desafioandroid.api.MarvelAPI
-import br.com.alanecher.desafioandroid.api.dto.CharacterDataWrapper
-import br.com.alanecher.desafioandroid.api.dto.ComicDataWrapper
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import br.com.alanecher.desafioandroid.ui.adapters.ListagemPersonagensAdapter
+import br.com.alanecher.desafioandroid.ui.viewmodels.ListagemPersonagensViewModel
+import kotlinx.android.synthetic.main.activity_listagem_personagens.*
+
 
 class ActivityListagemPersonagens : AppCompatActivity() {
 
-    private val api by lazy {
-        MarvelAPI.criaAPI()
-    }
+    private val model: ListagemPersonagensViewModel by viewModels { ListagemPersonagensViewModel.ListagemPersonagemVMFactory }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_listagem_personagens)
 
-        api.listaPersonagens().enqueue(
-            object : Callback<CharacterDataWrapper> {
-                override fun onFailure(call: Call<CharacterDataWrapper>, t: Throwable) {
-                    Log.e(ActivityListagemPersonagens::class.java.simpleName, "Listagem erro!")
-                }
+        model.personagensList.observe(this,
+            Observer {
+                var recyclerViewAdapter = ListagemPersonagensAdapter(it)
+                recyclerView.layoutManager = LinearLayoutManager(this)
+                recyclerView.adapter = recyclerViewAdapter
+            })
 
-                override fun onResponse(
-                    call: Call<CharacterDataWrapper>,
-                    response: Response<CharacterDataWrapper>
-                ) {
-
-                    when (response.code()) {
-                        200 -> {
-                            Log.i(
-                                ActivityListagemPersonagens::class.java.simpleName,
-                                "Listagem sucesso!"
-                            )
-
-                            api.listaHQPorPersonagem(response.body()?.data?.results?.get(0)?.id.toString()).enqueue(
-                                object : Callback<ComicDataWrapper> {
-                                    override fun onFailure(call: Call<ComicDataWrapper>, t: Throwable) {
-                                        Log.e(ActivityListagemPersonagens::class.java.simpleName, "Listagem erro!")
-                                    }
-
-                                    override fun onResponse(
-                                        call: Call<ComicDataWrapper>,
-                                        response: Response<ComicDataWrapper>
-                                    ) {
-
-                                        when (response.code()) {
-                                            200 -> {
-                                                Log.i(
-                                                    ActivityListagemPersonagens::class.java.simpleName,
-                                                    "Listagem sucesso!"
-                                                )
-
-                                            }
-                                            else -> {
-
-                                            }
-                                        }
-
-                                    }
-                                }
-                            )
-
-                        }
-                        else -> {
-
-                        }
-                    }
-
-                }
-            }
-        )
+        model.listarPersonagens()
     }
 }

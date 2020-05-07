@@ -1,4 +1,4 @@
-package br.com.alanecher.desafioandroid.api.dto
+package br.com.alanecher.desafioandroid.domain
 
 class StoryList(
     val available: Int?, //The number of total available stories in this list. Will always be greater than or equal to the "returned" value.,
