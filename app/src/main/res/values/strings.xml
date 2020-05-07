@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">desafio-android-alan-echer</string>
+    <string name="app_name">Desafio Android - Alan Echer</string>
+    <string name="title_actv_detalhes">Detalhes: </string>
+    <string name="title_actv_hqmaiscara">HQ Mais Cara: </string>
+    <string name="btn_ver_hq_mais_cara">Ver HQ mais cara</string>
+    <string name="plc_holder_desc">Descricao</string>
+    <string name="plc_holder_nome">Nome</string>
+    <string name="plc_holder_preco">Preço</string>
 </resources>

@@ -11,8 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.ActivityHQMaisCaraPersonagem"></activity>
-        <activity android:name=".ui.ActivityDetalhesPersonagem" />
+        <activity android:name=".ui.ActivityHQMaisCaraPersonagem" android:label="@string/title_actv_hqmaiscara"></activity>
+        <activity android:name=".ui.ActivityDetalhesPersonagem" android:label="@string/title_actv_detalhes" />
         <activity android:name=".ui.ActivityListagemPersonagens">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

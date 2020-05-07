@@ -9,6 +9,7 @@ import androidx.lifecycle.Observer
 import br.com.alanecher.desafioandroid.R
 import br.com.alanecher.desafioandroid.domain.Character
 import br.com.alanecher.desafioandroid.ui.viewmodels.DetalhesPersonagemViewModel
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_detalhes_personagem.*
 
 class ActivityDetalhesPersonagem : AppCompatActivity() {
@@ -31,6 +32,15 @@ class ActivityDetalhesPersonagem : AppCompatActivity() {
         model.personagem.observe(this, Observer {
             txtNome.text = it.name
             txtDescricao.text = it.description
+            title = getString(R.string.title_actv_detalhes)+it.name
+            var picasso = Picasso.get()
+            //picasso.isLoggingEnabled = true
+            picasso
+                .load(it.thumbnail!!.buildImageDetail())
+                //.resize(216, 324)
+                .placeholder(R.drawable.ic_launcher_background)
+                .error(R.drawable.ic_launcher_background)
+                .into(imgDetalhe)
         })
 
         model.carregaPersonagem(intent.getSerializableExtra(EXTRA_PERSONAGEM) as Character)

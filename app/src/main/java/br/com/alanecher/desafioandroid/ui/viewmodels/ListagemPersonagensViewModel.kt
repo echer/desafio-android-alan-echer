@@ -25,7 +25,7 @@ class ListagemPersonagensViewModel(
         api.listaPersonagens().enqueue(
             object : Callback<CharacterDataWrapper> {
                 override fun onFailure(call: Call<CharacterDataWrapper>, t: Throwable) {
-                    Log.e(ListagemPersonagensViewModel::class.java.simpleName, "Listagem erro!")
+
                 }
 
                 override fun onResponse(
@@ -35,7 +35,6 @@ class ListagemPersonagensViewModel(
 
                     when (response.code()) {
                         200 -> {
-                            Log.i(ListagemPersonagensViewModel::class.java.simpleName, "Listagem sucesso!")
                             personagensLiveData.value = response.body()?.data?.results
                         }
                         else -> {

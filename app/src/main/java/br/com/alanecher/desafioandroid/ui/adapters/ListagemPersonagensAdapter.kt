@@ -1,5 +1,6 @@
 package br.com.alanecher.desafioandroid.ui.adapters
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import br.com.alanecher.desafioandroid.R
 import br.com.alanecher.desafioandroid.domain.Character
+import com.squareup.picasso.Picasso
 
 
 class ListagemPersonagensAdapter(private val personagens: List<Character>, private val clickListener:OnItemClickListener) : RecyclerView.Adapter<ListagemPersonagensAdapter.PersonagemViewHolder>() {
@@ -39,6 +41,15 @@ class ListagemPersonagensAdapter(private val personagens: List<Character>, priva
         var item = personagens[position]
         holder.txtNome?.text = item.name
         holder.txtDescricao?.text = item.description
+
+        var picasso = Picasso.get()
+        //picasso.isLoggingEnabled = true
+        picasso
+            .load(item.thumbnail!!.buildImageThumb())
+            //.resize(216, 324)
+            .placeholder(R.drawable.ic_launcher_background)
+            .error(R.drawable.ic_launcher_background)
+            .into(holder.imagem);
 
         holder.itemView.setOnClickListener{
             clickListener.onItemClick(item)

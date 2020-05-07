@@ -9,6 +9,7 @@ import androidx.lifecycle.Observer
 import br.com.alanecher.desafioandroid.R
 import br.com.alanecher.desafioandroid.domain.Character
 import br.com.alanecher.desafioandroid.ui.viewmodels.HQMaisCaraPersonagemViewModel
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_h_q_mais_cara_personagem.*
 
 class ActivityHQMaisCaraPersonagem : AppCompatActivity() {
@@ -28,6 +29,15 @@ class ActivityHQMaisCaraPersonagem : AppCompatActivity() {
             txtTitulo.text = it.title
             txtDescricao.text = it.description
             txtPreco.text = "$ ${it.priceMax!!.price}"
+            title = getString(R.string.title_actv_hqmaiscara)+it.title
+            var picasso = Picasso.get()
+            //picasso.isLoggingEnabled = true
+            picasso
+                .load(it.thumbnail!!.buildImageDetail())
+                //.resize(216, 324)
+                .placeholder(R.drawable.ic_launcher_background)
+                .error(R.drawable.ic_launcher_background)
+                .into(imgHQ);
         })
 
         model.carregarHQMaisCara((intent.getSerializableExtra(EXTRA_PERSONAGEM) as Character).id.toString())

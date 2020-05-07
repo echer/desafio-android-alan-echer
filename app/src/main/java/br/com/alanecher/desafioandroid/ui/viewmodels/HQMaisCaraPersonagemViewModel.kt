@@ -17,7 +17,7 @@ class HQMaisCaraPersonagemViewModel(
     private var api: MarvelAPI
 ) : ViewModel() {
 
-    private var pageSize = 100
+    private var pageSize = 20
     private var offset = 0
     private val quadrinhosLiveData = MutableLiveData<Comic>()
     private var quadrinhosPaginado = ArrayList<Comic>()
@@ -31,7 +31,7 @@ class HQMaisCaraPersonagemViewModel(
         api.listaHQPorPersonagem(id, offset, pageSize).enqueue(
             object : Callback<ComicDataWrapper> {
                 override fun onFailure(call: Call<ComicDataWrapper>, t: Throwable) {
-                    Log.e(ActivityListagemPersonagens::class.java.simpleName, "Listagem erro!")
+
                 }
 
                 override fun onResponse(
@@ -41,13 +41,9 @@ class HQMaisCaraPersonagemViewModel(
 
                     when (response.code()) {
                         200 -> {
-                            Log.i(
-                                ActivityListagemPersonagens::class.java.simpleName,
-                                "Listagem sucesso!"
-                            )
-
                             quadrinhosPaginado.addAll(response.body()?.data?.results!!)
                             if(quadrinhosPaginado.size < response.body()?.data?.total!! && response.body()?.data?.results?.size!! > 0){
+                                Thread.sleep(200)
                                 api = MarvelAPI.criaAPI()
                                 carregarHQs(offset+pageSize,pageSize, id, quadrinhosPaginado)
                             }else{
