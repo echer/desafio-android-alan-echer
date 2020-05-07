@@ -2,6 +2,7 @@ package br.com.alanecher.desafioandroid.ui
 
 import android.content.ClipData.newIntent
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -34,8 +35,11 @@ class ActivityListagemPersonagens : AppCompatActivity() {
                 })
                 recyclerView.layoutManager = LinearLayoutManager(this)
                 recyclerView.adapter = recyclerViewAdapter
+
+                progressBar1.visibility = View.GONE
             })
 
+        progressBar1.visibility = View.VISIBLE
         model.listarPersonagens()
     }
 }

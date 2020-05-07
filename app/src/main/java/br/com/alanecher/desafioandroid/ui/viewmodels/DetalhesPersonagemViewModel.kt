@@ -8,7 +8,6 @@ import br.com.alanecher.desafioandroid.api.MarvelAPI
 import br.com.alanecher.desafioandroid.domain.Character
 
 class DetalhesPersonagemViewModel(
-    private val api: MarvelAPI
 ) : ViewModel() {
 
     private val personagemLiveData = MutableLiveData<Character>()
@@ -21,14 +20,8 @@ class DetalhesPersonagemViewModel(
 
     object DetalhesPersonagemVMFactory : ViewModelProvider.Factory {
 
-        private val api by lazy {
-            MarvelAPI.criaAPI()
-        }
-
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-            return DetalhesPersonagemViewModel(
-                api
-            ) as T
+            return DetalhesPersonagemViewModel() as T
         }
     }
 

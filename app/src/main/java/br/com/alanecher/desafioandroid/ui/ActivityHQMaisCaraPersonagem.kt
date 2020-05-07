@@ -3,6 +3,7 @@ package br.com.alanecher.desafioandroid.ui
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -11,6 +12,8 @@ import br.com.alanecher.desafioandroid.domain.Character
 import br.com.alanecher.desafioandroid.ui.viewmodels.HQMaisCaraPersonagemViewModel
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_h_q_mais_cara_personagem.*
+import kotlinx.android.synthetic.main.activity_h_q_mais_cara_personagem.progressBar1
+import kotlinx.android.synthetic.main.activity_listagem_personagens.*
 
 class ActivityHQMaisCaraPersonagem : AppCompatActivity() {
 
@@ -37,9 +40,12 @@ class ActivityHQMaisCaraPersonagem : AppCompatActivity() {
                 //.resize(216, 324)
                 .placeholder(R.drawable.ic_launcher_background)
                 .error(R.drawable.ic_launcher_background)
-                .into(imgHQ);
+                .into(imgHQ)
+
+            progressBar1.visibility = View.GONE
         })
 
+        progressBar1.visibility = View.VISIBLE
         model.carregarHQMaisCara((intent.getSerializableExtra(EXTRA_PERSONAGEM) as Character).id.toString())
     }
 

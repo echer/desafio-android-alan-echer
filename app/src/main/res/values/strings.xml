@@ -7,4 +7,5 @@
     <string name="plc_holder_nome">Nome</string>
     <string name="plc_holder_preco">Preço</string>
     <string name="marvel_rights">Data provided by Marvel. © 2014 Marvel</string>
+    <string name="carregando">Carregando...</string>
 </resources>

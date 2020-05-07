@@ -16,4 +16,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:listitem="@layout/item_personagens" />
+
+    <include
+        android:id="@+id/progressBar1"
+        layout="@layout/fragment_progresso"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
