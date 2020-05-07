@@ -2,6 +2,7 @@ package br.com.alanecher.desafioandroid.ui
 
 import android.content.ClipData.newIntent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -21,6 +22,8 @@ class ActivityListagemPersonagens : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_listagem_personagens)
+
+        Toast.makeText(this,getString(R.string.marvel_rights), Toast.LENGTH_SHORT).show()
 
         model.personagensList.observe(this,
             Observer {
