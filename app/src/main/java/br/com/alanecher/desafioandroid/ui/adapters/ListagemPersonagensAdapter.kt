@@ -1,58 +1,56 @@
 package br.com.alanecher.desafioandroid.ui.adapters
 
-import android.content.Context
-import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
+import androidx.paging.PagedListAdapter
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import br.com.alanecher.desafioandroid.R
 import br.com.alanecher.desafioandroid.domain.Character
-import com.squareup.picasso.Picasso
 
 
-class ListagemPersonagensAdapter(private val personagens: List<Character>, private val clickListener:OnItemClickListener) : RecyclerView.Adapter<ListagemPersonagensAdapter.PersonagemViewHolder>() {
+class ListagemPersonagensAdapter(private val retry: () -> Unit, private val clickListener:OnItemClickListener)
+    : PagedListAdapter<Character, RecyclerView.ViewHolder>(PersonagensDiffCallback) {
 
-    inner class PersonagemViewHolder(itemView: View):
-        RecyclerView.ViewHolder(itemView) {
+    private val DATA_VIEW_TYPE = 1
+    private val FOOTER_VIEW_TYPE = 2
 
-        var imagem: ImageView? = null
-        var txtNome: TextView? = null
-        var txtDescricao: TextView? = null
+    private var state = EstadoPaginacao.CARREGANDO
 
-        init{
-            imagem = itemView.findViewById(R.id.imagem)
-            txtNome = itemView.findViewById(R.id.txtNome)
-            txtDescricao = itemView.findViewById(R.id.txtDescricao)
-        }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        return if (viewType == DATA_VIEW_TYPE) PersonagemViewHolder.create(parent) else PersonagemViewHolderFooter.create(retry, parent)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PersonagemViewHolder {
-        var view = LayoutInflater.from(parent.context).inflate(R.layout.item_personagens, parent, false)
-        return PersonagemViewHolder(view)
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        if (getItemViewType(position) == DATA_VIEW_TYPE)
+            (holder as PersonagemViewHolder).bind(getItem(position), clickListener)
+        else (holder as PersonagemViewHolderFooter).bind(state)
+    }
+
+    override fun getItemViewType(position: Int): Int {
+        return if (position < super.getItemCount()) DATA_VIEW_TYPE else FOOTER_VIEW_TYPE
     }
 
     override fun getItemCount(): Int {
-        return personagens.size
+        return super.getItemCount() + if (hasFooter()) 1 else 0
     }
 
-    override fun onBindViewHolder(holder: PersonagemViewHolder, position: Int) {
-        var item = personagens[position]
-        holder.txtNome?.text = item.name
-        holder.txtDescricao?.text = item.description
+    private fun hasFooter(): Boolean {
+        return super.getItemCount() != 0 && (state == EstadoPaginacao.CARREGANDO || state == EstadoPaginacao.ERRO)
+    }
 
-        var picasso = Picasso.get()
-        //picasso.isLoggingEnabled = true
-        picasso
-            .load(item.thumbnail!!.buildImageThumb())
-            //.resize(216, 324)
-            .placeholder(R.drawable.ic_launcher_background)
-            .error(R.drawable.ic_launcher_background)
-            .into(holder.imagem);
+    fun setState(estadoPaginacao: EstadoPaginacao) {
+        this.state = estadoPaginacao
+        notifyItemChanged(super.getItemCount())
+    }
 
-        holder.itemView.setOnClickListener{
-            clickListener.onItemClick(item)
+    companion object {
+        val PersonagensDiffCallback = object : DiffUtil.ItemCallback<Character>() {
+            override fun areItemsTheSame(oldItem: Character, newItem: Character): Boolean {
+                return oldItem.id == newItem.id
+            }
+
+            override fun areContentsTheSame(oldItem: Character, newItem: Character): Boolean {
+                return oldItem == newItem
+            }
         }
     }
 

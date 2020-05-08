@@ -14,4 +14,19 @@ class Character(
     //val stories: StoryList?, //A resource list of stories in which this character appears.,
     //val events: EventList?, //A resource list of events in which this character appears.,
     //val series: SeriesList? // resource list of series in which this character appears.
-):Serializable
+):Serializable{
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as Character
+
+        if (id != other.id) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        return id ?: 0
+    }
+}

@@ -4,12 +4,14 @@ import android.util.Log
 import br.com.alanecher.desafioandroid.BuildConfig
 import br.com.alanecher.desafioandroid.domain.CharacterDataWrapper
 import br.com.alanecher.desafioandroid.domain.ComicDataWrapper
+import io.reactivex.Single
 import okhttp3.HttpUrl
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -20,7 +22,7 @@ import java.security.MessageDigest
 interface MarvelAPI {
 
     @GET("characters")
-    fun listaPersonagens(): Call<CharacterDataWrapper>
+    fun listaPersonagens(@Query("offset") offset: Int, @Query("limit") limit: Int): Single<CharacterDataWrapper>
 
     @GET("characters/{characterId}/comics")
     fun listaHQPorPersonagem(@Path("characterId") characterId:String, @Query("offset") offset:Int, @Query("limit") limit:Int): Call<ComicDataWrapper>
@@ -65,6 +67,7 @@ interface MarvelAPI {
 
             return Retrofit.Builder()
                 .baseUrl(httpUrl)
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .client(client)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
