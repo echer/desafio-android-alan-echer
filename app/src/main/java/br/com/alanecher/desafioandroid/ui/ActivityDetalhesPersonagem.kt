@@ -1,9 +1,14 @@
 package br.com.alanecher.desafioandroid.ui
 
+import android.app.ActivityOptions
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
+import android.transition.Explode
+import android.transition.Fade
 import android.view.View
+import android.view.Window
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -21,6 +26,14 @@ class ActivityDetalhesPersonagem : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        with(window) {
+            requestFeature(Window.FEATURE_CONTENT_TRANSITIONS)
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                exitTransition = Explode()
+                enterTransition = Explode()
+            }
+        }
         setContentView(R.layout.activity_detalhes_personagem)
 
         if (!intent.hasExtra(EXTRA_PERSONAGEM)) {
@@ -29,7 +42,12 @@ class ActivityDetalhesPersonagem : AppCompatActivity() {
         }
 
         btnHQMaisCara.setOnClickListener {
-            startActivity(ActivityHQMaisCaraPersonagem.newIntent(ActivityDetalhesPersonagem@this,model.personagem.value))
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                startActivity(ActivityHQMaisCaraPersonagem.newIntent(this,model.personagem.value),
+                    ActivityOptions.makeSceneTransitionAnimation(this).toBundle())
+            }else{
+                startActivity(ActivityHQMaisCaraPersonagem.newIntent(this,model.personagem.value))
+            }
         }
 
         model.personagem.observe(this, Observer {

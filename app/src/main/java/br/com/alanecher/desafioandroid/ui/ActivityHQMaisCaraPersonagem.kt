@@ -2,8 +2,11 @@ package br.com.alanecher.desafioandroid.ui
 
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
+import android.transition.Explode
 import android.view.View
+import android.view.Window
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -21,6 +24,14 @@ class ActivityHQMaisCaraPersonagem : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        with(window) {
+            requestFeature(Window.FEATURE_CONTENT_TRANSITIONS)
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                exitTransition = Explode()
+                enterTransition = Explode()
+            }
+        }
         setContentView(R.layout.activity_h_q_mais_cara_personagem)
 
         if (!intent.hasExtra(EXTRA_PERSONAGEM)) {

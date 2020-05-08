@@ -1,5 +1,7 @@
 package br.com.alanecher.desafioandroid.ui
 
+import android.app.ActivityOptions
+import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -35,12 +37,21 @@ class ActivityListagemPersonagens : AppCompatActivity() {
     private fun initAdapter() {
         adapter = ListagemPersonagensAdapter({ model.retry() }, object : OnItemClickListener {
             override fun onItemClick(item: Any) {
-                startActivity(
-                    ActivityDetalhesPersonagem.newIntent(
-                        this@ActivityListagemPersonagens,
-                        item as Character
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    startActivity(
+                        ActivityDetalhesPersonagem.newIntent(
+                            this@ActivityListagemPersonagens,
+                            item as Character
+                        ), ActivityOptions.makeSceneTransitionAnimation(this@ActivityListagemPersonagens).toBundle()
                     )
-                )
+                }else{
+                    startActivity(
+                        ActivityDetalhesPersonagem.newIntent(
+                            this@ActivityListagemPersonagens,
+                            item as Character
+                        )
+                    )
+                }
             }
         })
         recyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
