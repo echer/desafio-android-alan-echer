@@ -52,7 +52,10 @@ class ActivityDetalhesPersonagem : AppCompatActivity() {
 
         model.personagem.observe(this, Observer {
             txtNome.text = it.name
-            txtDescricao.text = it.description
+            if(!it.description!!.isEmpty())
+                txtDescricao.text = it.description
+            else
+                txtDescricao.text = getString(R.string.sem_informacao_personagem)
             title = getString(R.string.title_actv_detalhes)+it.name
             var picasso = Picasso.get()
             //picasso.isLoggingEnabled = true

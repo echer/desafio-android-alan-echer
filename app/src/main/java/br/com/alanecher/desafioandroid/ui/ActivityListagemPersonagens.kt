@@ -28,6 +28,8 @@ class ActivityListagemPersonagens : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_listagem_personagens)
 
+        title = getString(R.string.title_listagem_personagens)
+
         Toast.makeText(this, getString(R.string.marvel_rights), Toast.LENGTH_SHORT).show()
 
         initAdapter()

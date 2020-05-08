@@ -3,7 +3,7 @@
     <string name="title_actv_detalhes">Detalhes: </string>
     <string name="title_actv_hqmaiscara">HQ Mais Cara: </string>
     <string name="btn_ver_hq_mais_cara">Ver HQ mais cara</string>
-    <string name="plc_holder_desc">Descricao</string>
+    <string name="plc_holder_desc">Descrição: </string>
     <string name="plc_holder_nome">Nome</string>
     <string name="plc_holder_preco">Preço</string>
     <string name="marvel_rights">Data provided by Marvel. © 2014 Marvel</string>
@@ -13,4 +13,6 @@
     <string name="dialog_atencao">Atenção</string>
     <string name="msg_ok">Ok</string>
     <string name="msg_erro">Não foi possível realizar a requisição tente novamente!</string>
+    <string name="title_listagem_personagens">Listagem de Personagens</string>
+    <string name="sem_informacao_personagem">Sem informações sobre este personagem</string>
 </resources>

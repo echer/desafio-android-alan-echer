@@ -48,6 +48,18 @@
                 app:layout_constraintTop_toBottomOf="@+id/txtNome" />
 
             <TextView
+                android:id="@+id/lblDescricao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:ellipsize="end"
+                android:maxLines="3"
+                android:text="@string/plc_holder_desc"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imgDetalhe" />
+
+            <TextView
                 android:id="@+id/txtDescricao"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -59,7 +71,7 @@
                 android:text="@string/plc_holder_desc"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imgDetalhe" />
+                app:layout_constraintTop_toBottomOf="@+id/lblDescricao" />
 
             <Button
                 android:id="@+id/btnHQMaisCara"
