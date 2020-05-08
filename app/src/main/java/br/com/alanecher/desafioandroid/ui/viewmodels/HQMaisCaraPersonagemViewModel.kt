@@ -53,18 +53,7 @@ class HQMaisCaraPersonagemViewModel(
                                 api = MarvelAPI.criaAPI()
                                 carregarHQs(offset + pageSize, pageSize, id, quadrinhosPaginado)
                             } else {
-                                var hqMaisCara = quadrinhosPaginado.map { comic ->
-                                    var priceMax = comic.prices!!.maxBy { price ->
-                                        price.price!!
-                                    }
-                                    if (comic.priceMax == null || priceMax!!.price!! > comic.priceMax!!.price!!) {
-                                        comic.priceMax = priceMax
-                                    }
-                                    comic
-                                }.maxBy {
-                                    it!!.priceMax!!.price!!
-                                }
-                                quadrinhosLiveData.value = hqMaisCara
+                                quadrinhosLiveData.value = encontraHQMaisCara(quadrinhosPaginado)
                             }
                         }
                         else -> {
@@ -75,6 +64,21 @@ class HQMaisCaraPersonagemViewModel(
                 }
             }
         )
+    }
+
+    fun encontraHQMaisCara(list: ArrayList<Comic>): Comic? {
+        var hqMaisCara = list.map { comic ->
+            var priceMax = comic.prices!!.maxBy { price ->
+                price.price!!
+            }
+            if (comic.priceMax == null || priceMax!!.price!! > comic.priceMax!!.price!!) {
+                comic.priceMax = priceMax
+            }
+            comic
+        }.maxBy {
+            it!!.priceMax!!.price!!
+        }
+        return hqMaisCara
     }
 
     object HQMaisCaraPersonagemVMFactory : ViewModelProvider.Factory {

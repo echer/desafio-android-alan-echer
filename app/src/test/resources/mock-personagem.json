@@ -1,0 +1,240 @@
+{
+  "id": 1011297,
+  "name": "Agent Brand",
+  "description": "",
+  "modified": "2013-10-24T13:09:30-0400",
+  "thumbnail": {
+    "path": "http://i.annihil.us/u/prod/marvel/i/mg/4/60/52695285d6e7e",
+    "extension": "jpg"
+  },
+  "resourceURI": "http://gateway.marvel.com/v1/public/characters/1011297",
+  "comics": {
+    "available": 17,
+    "collectionURI": "http://gateway.marvel.com/v1/public/characters/1011297/comics",
+    "items": [
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/comics/5477",
+        "name": "Astonishing X-Men (2004) #19 (Variant)"
+      },
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/comics/6120",
+        "name": "Astonishing X-Men (2004) #21"
+      },
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/comics/6309",
+        "name": "Astonishing X-Men (2004) #22"
+      },
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/comics/16119",
+        "name": "Astonishing X-Men (2004) #23"
+      },
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/comics/17353",
+        "name": "Astonishing X-Men (2004) #24"
+      },
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/comics/24503",
+        "name": "Astonishing X-Men (2004) #32"
+      },
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/comics/24504",
+        "name": "Astonishing X-Men (2004) #33"
+      },
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/comics/38318",
+        "name": "Astonishing X-Men (2004) #38"
+      },
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/comics/38319",
+        "name": "Astonishing X-Men (2004) #40"
+      },
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/comics/40024",
+        "name": "Astonishing X-Men (2004) #40 (I Am Captain America Variant)"
+      },
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/comics/45950",
+        "name": "Cable and X-Force (2012) #8"
+      },
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/comics/39890",
+        "name": "Heralds (Trade Paperback)"
+      },
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/comics/26232",
+        "name": "S.W.O.R.D. (2009) #2"
+      },
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/comics/26233",
+        "name": "S.W.O.R.D. (2009) #3"
+      },
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/comics/26234",
+        "name": "S.W.O.R.D. (2009) #4"
+      },
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/comics/30518",
+        "name": "S.W.O.R.D. (2009) #5"
+      },
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/comics/61430",
+        "name": "The Mighty Captain Marvel (2017) #5"
+      }
+    ],
+    "returned": 17
+  },
+  "series": {
+    "available": 5,
+    "collectionURI": "http://gateway.marvel.com/v1/public/characters/1011297/series",
+    "items": [
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/series/744",
+        "name": "Astonishing X-Men (2004 - 2013)"
+      },
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/series/16907",
+        "name": "Cable and X-Force (2012 - 2014)"
+      },
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/series/13065",
+        "name": "Heralds (2010)"
+      },
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/series/8233",
+        "name": "S.W.O.R.D. (2009 - 2010)"
+      },
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/series/22551",
+        "name": "The Mighty Captain Marvel (2017 - 2018)"
+      }
+    ],
+    "returned": 5
+  },
+  "stories": {
+    "available": 20,
+    "collectionURI": "http://gateway.marvel.com/v1/public/characters/1011297/stories",
+    "items": [
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/stories/3353",
+        "name": "Interior #3353",
+        "type": "interiorStory"
+      },
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/stories/7670",
+        "name": "ASTONISHING X-MEN (2004) #21",
+        "type": "cover"
+      },
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/stories/8144",
+        "name": "ASTONISHING X-MEN (2004) #22",
+        "type": "cover"
+      },
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/stories/32919",
+        "name": "ASTONISHING X-MEN (2004) #23",
+        "type": "cover"
+      },
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/stories/36374",
+        "name": "ASTONISHING X-MEN (2004) #24",
+        "type": "cover"
+      },
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/stories/54039",
+        "name": "ASTONISHING X-MEN (2004) #32",
+        "type": "cover"
+      },
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/stories/54041",
+        "name": "ASTONISHING X-MEN (2004) #33",
+        "type": "cover"
+      },
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/stories/57763",
+        "name": "S.W.O.R.D. (2009) #2",
+        "type": "cover"
+      },
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/stories/57765",
+        "name": "S.W.O.R.D. (2009) #3",
+        "type": "cover"
+      },
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/stories/57767",
+        "name": "S.W.O.R.D. (2009) #4",
+        "type": "cover"
+      },
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/stories/69862",
+        "name": "S.W.O.R.D. (2009) #5",
+        "type": "cover"
+      },
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/stories/89830",
+        "name": "ASTONISHING X-MEN (2004) #38",
+        "type": "cover"
+      },
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/stories/89900",
+        "name": "Astonishing X-Men (2004) #38",
+        "type": "interiorStory"
+      },
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/stories/90548",
+        "name": "Heralds TPB",
+        "type": "cover"
+      },
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/stories/90819",
+        "name": "Interior #90819",
+        "type": "interiorStory"
+      },
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/stories/90853",
+        "name": " Interior  Astonishing X-Men (2004) #40",
+        "type": "interiorStory"
+      },
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/stories/90944",
+        "name": "ASTONISHING X-MEN (2004) #40",
+        "type": "cover"
+      },
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/stories/103418",
+        "name": "Cable and X-Force (2012) #8",
+        "type": "cover"
+      },
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/stories/103419",
+        "name": "story from Cable and X-Force (2012) #8",
+        "type": "interiorStory"
+      },
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/stories/133289",
+        "name": "cover from Captain Marvel (2016) #5",
+        "type": "cover"
+      }
+    ],
+    "returned": 20
+  },
+  "events": {
+    "available": 0,
+    "collectionURI": "http://gateway.marvel.com/v1/public/characters/1011297/events",
+    "items": [],
+    "returned": 0
+  },
+  "urls": [
+    {
+      "type": "detail",
+      "url": "http://marvel.com/characters/100/agent_brand?utm_campaign=apiRef&utm_source=54bce2fd725743adb4ff516720aa9fe8"
+    },
+    {
+      "type": "wiki",
+      "url": "http://marvel.com/universe/Agent_Brand?utm_campaign=apiRef&utm_source=54bce2fd725743adb4ff516720aa9fe8"
+    },
+    {
+      "type": "comiclink",
+      "url": "http://marvel.com/comics/characters/1011297/agent_brand?utm_campaign=apiRef&utm_source=54bce2fd725743adb4ff516720aa9fe8"
+    }
+  ]
+}
