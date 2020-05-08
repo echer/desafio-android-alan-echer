@@ -32,4 +32,18 @@ class Comic (
     val events: EventList? //A resource list containing the events in which this comic appears.
 ){
     var priceMax:ComicPrice? = null
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as Comic
+
+        if (id != other.id) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        return id ?: 0
+    }
 }

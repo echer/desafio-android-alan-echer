@@ -9,4 +9,8 @@
     <string name="marvel_rights">Data provided by Marvel. © 2014 Marvel</string>
     <string name="carregando">Carregando...</string>
     <string name="error_loading">Não foi possível carregar, clique para tentar novamente!</string>
+    <string name="vld_personagem_sem_quadrinho">O personagem selecionado não possui nenhum quadrinho!</string>
+    <string name="dialog_atencao">Atenção</string>
+    <string name="msg_ok">Ok</string>
+    <string name="msg_erro">Não foi possível realizar a requisição tente novamente!</string>
 </resources>

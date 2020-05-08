@@ -60,11 +60,19 @@ class ListaPersonagensDataSource(
             marvelAPI.listaPersonagens(params.key, params.requestedLoadSize)
                 .subscribe(
                     { response ->
-                        updateState(EstadoPaginacao.COMPLETO)
-                        callback.onResult(
-                            response!!.data!!.results!!,
-                            params.key + params.requestedLoadSize
-                        )
+                        when(response!!.code!!){
+                            200 -> {
+                                updateState(EstadoPaginacao.COMPLETO)
+                                callback.onResult(
+                                    response!!.data!!.results!!,
+                                    params.key + params.requestedLoadSize
+                                )
+                            }
+                            else -> {
+                                updateState(EstadoPaginacao.ERRO)
+                                setRetry(Action { loadAfter(params, callback) })
+                            }
+                        }
                     },
                     {
                         updateState(EstadoPaginacao.ERRO)
