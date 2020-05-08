@@ -61,7 +61,7 @@ interface MarvelAPI {
             logger.level = HttpLoggingInterceptor.Level.BASIC
 
             val client = OkHttpClient.Builder()
-                .addInterceptor(logger)
+                //.addInterceptor(logger)
                 .addInterceptor(headerInterceptor)
                 .build()
 

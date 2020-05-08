@@ -18,11 +18,11 @@ class ListaPersonagensDataSource(
 ) : PageKeyedDataSource<Int, Character>() {
 
     private var tentarNovCompletable: Completable? = null
-    var estadoPaginacao: MutableLiveData<EstadoPaginacao> = MutableLiveData()
+    var estadoPaginacao: MutableLiveData<EstadoPaginacao>? = MutableLiveData()
 
     override fun loadInitial(
         params: LoadInitialParams<Int>,
-        callback: LoadInitialCallback<Int, Character?>
+        callback: LoadInitialCallback<Int, Character>
     ) {
 
         updateState(EstadoPaginacao.CARREGANDO)
@@ -75,7 +75,7 @@ class ListaPersonagensDataSource(
     }
 
     private fun updateState(estadoPaginacao: EstadoPaginacao) {
-        this.estadoPaginacao.postValue(estadoPaginacao)
+        this.estadoPaginacao!!.postValue(estadoPaginacao)
     }
 
     fun retry() {
